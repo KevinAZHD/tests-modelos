@@ -648,12 +648,8 @@ export const fuzzyQuestions = [
     "explanation": "K-means coloca centros μ cerca de agrupaciones naturales de datos. Reglas relevantes desde el inicio → converge más rápido que aleatorio."
   },
   {
-    "question": "Se tiene la regla TSK: \"SI x ₁ ES A Y x ₂ ES B ENTONCES y = 3x ₁ − 2x ₂ + 5\". Para x ₁ =4, x ₂ =1, con peso normalizado w̄=1 (única regla activ",
+    "question": "Se tiene la regla TSK: \"SI x ₁ ES A Y x ₂ ES B ENTONCES y = 3x ₁ − 2x ₂ + 5\". Para x ₁ =4, x ₂ =1, con peso normalizado w̄=1 (única regla activa), ¿cuál es la salida del sistema?",
     "options": [
-      {
-        "text": ", ¿cuál es la salida del sistema?",
-        "isCorrect": false
-      },
       {
         "text": "5 (solo el término independiente, porque los coeficientes se ignoran al normalizar)",
         "isCorrect": false
