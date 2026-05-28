@@ -57,10 +57,12 @@ export const QuestionCard = ({ question, index, answer, onSelectOption }) => {
         })}
       </div>
 
-      {hasAnswered && question.explanation && (
-        <div className="mt-6 p-5 rounded-xl bg-blue-50 dark:bg-blue-950/20 border border-blue-200 dark:border-blue-800/50 text-blue-900 dark:text-blue-200 text-base md:text-lg leading-relaxed shadow-sm transition-all duration-500 animate-fadeIn">
-          <strong className="block font-bold text-blue-950 dark:text-blue-100 mb-1">Justificación:</strong>
-          {renderFormattedText(question.explanation)}
+      {hasAnswered && !question.options[answer]?.isCorrect && question.explanation && (
+        <div className="mt-5 p-4 rounded-xl bg-amber-50 dark:bg-amber-900/20 border-2 border-amber-400 dark:border-amber-600">
+          <p className="text-amber-800 dark:text-amber-200 text-base leading-relaxed">
+            <span className="font-bold mr-1">💡</span>
+            {renderFormattedText(question.explanation)}
+          </p>
         </div>
       )}
     </div>
