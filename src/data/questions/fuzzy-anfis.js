@@ -14,7 +14,8 @@ export const fuzzyQuestions = [
         "text": "Artificial Neuro-Fuzzy Input System",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "ANFIS = Adaptive Neuro-Fuzzy Inference System. Combina red neuronal + lógica difusa en un solo sistema de inferencia."
   },
   {
     "question": "¿Qué tipo de sistema de inferencia difusa implementa ANFIS?",
@@ -31,7 +32,8 @@ export const fuzzyQuestions = [
         "text": "Tsukamoto, con funciones monotónicas como consecuente",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "ANFIS usa TSK (Takagi-Sugeno-Kang). Consecuente = función lineal de las entradas, no conjunto difuso como Mamdani."
   },
   {
     "question": "¿Cuántas capas tiene la arquitectura ANFIS?",
@@ -48,7 +50,8 @@ export const fuzzyQuestions = [
         "text": "5 capas (fuzzificación, fuerza de disparo, normalización, consecuente, salida)",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "ANFIS = 5 capas: fuzzificar → fuerza disparo → normalizar → consecuente lineal → sumar salida. Cada capa un paso."
   },
   {
     "question": "¿Qué operador difuso implementa la unión y cuál la intersección en FIS Mamdani clásico?",
@@ -65,7 +68,8 @@ export const fuzzyQuestions = [
         "text": "Unión = mínimo, intersección = máximo",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Mamdani clásico: unión = máximo (OR difuso), intersección = mínimo (AND difuso). Operadores básicos de conjuntos difusos."
   },
   {
     "question": "¿Qué tipo de función de pertenencia usan los nodos de la Capa 1 en la implementación de ANFIS?",
@@ -82,7 +86,8 @@ export const fuzzyQuestions = [
         "text": "Gaussiana: exp(-(x- μ)² / (2σ²))",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "Capa 1 usa Gaussiana: campana suave con centro μ y anchura σ. Diferenciable en todo punto → ideal para backpropagation."
   },
   {
     "question": "¿Qué calcula la Capa 2 de ANFIS?",
@@ -99,7 +104,8 @@ export const fuzzyQuestions = [
         "text": "La salida normalizada de cada regla",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Capa 2 = producto de membresías de cada entrada. Si una entrada no encaja bien, toda la fuerza de la regla baja."
   },
   {
     "question": "En Mamdani, el consecuente de cada regla es:",
@@ -116,7 +122,8 @@ export const fuzzyQuestions = [
         "text": "Un valor singleton que representa el centro del conjunto lingüístico de salida",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "En Mamdani, consecuente = conjunto difuso (\"freno fuerte\"). Se recorta o escala según fuerza de disparo de la regla."
   },
   {
     "question": "¿Qué operación realiza la Capa 3 de ANFIS?",
@@ -133,7 +140,8 @@ export const fuzzyQuestions = [
         "text": "Aplica la función lineal del consecuente a cada regla",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Capa 3 normaliza: divide cada fuerza de disparo entre la suma total. Así los pesos suman 1 y cada regla tiene peso relativo."
   },
   {
     "question": "¿Qué parámetros son entrenables en la Capa 1 (fuzzificación)?",
@@ -150,7 +158,8 @@ export const fuzzyQuestions = [
         "text": "Los pesos de la T-norma y el operador de agregación",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Capa 1 entrena μ (centro) y σ (anchura) de las Gaussianas. Backprop ajusta dónde y cuánto se activa cada regla."
   },
   {
     "question": "En Mamdani con dos reglas activas cuyos consecuentes son los conjuntos C ₁ y C ₂ , ¿qué operación produce el conjunto difuso agregado?",
@@ -167,7 +176,8 @@ export const fuzzyQuestions = [
         "text": "La suma aritmética punto a punto de las membresías de cada regla",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Agregación Mamdani = unión (máximo punto a punto) de conjuntos recortados. Junta salidas de todas las reglas en un solo conjunto."
   },
   {
     "question": "¿Qué representa el consecuente en una regla TSK de orden 1?",
@@ -184,7 +194,8 @@ export const fuzzyQuestions = [
         "text": "Un valor constante (singleton) independiente de las entradas",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "TSK orden 1: consecuente = función lineal y = p·x₁ + q·x₂ + r. No es conjunto difuso, es un número calculado de entradas."
   },
   {
     "question": "¿Cuál es el método de defuzzificación centroide y qué calcula exactamente?",
@@ -201,7 +212,8 @@ export const fuzzyQuestions = [
         "text": "Calcula el centro de masa del conjunto difuso agregado mediante integración: x* = ∫x· μ( x)dx / ∫μ( x)dx",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "Centroide = centro de masa del conjunto difuso agregado. Integra x·μ(x) / ∫μ(x). Como buscar punto de equilibrio de una figura."
   },
   {
     "question": "¿Qué calcula la capa de salida final de ANFIS?",
@@ -218,7 +230,8 @@ export const fuzzyQuestions = [
         "text": "La suma ponderada de las salidas de todas las reglas: y = Σ w̄ᵢ · yᵢ",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "Capa salida ANFIS = suma ponderada: y = Σ w̄ᵢ·yᵢ. Cada regla aporta su consecuente × su peso normalizado."
   },
   {
     "question": "Un sistema Mamdani tiene la regla: \"SI velocidad ES alta ENTONCES freno ES fuerte\". La membresía de \"velocidad alta\" para la entrada actual es 0,4. ¿Qué se hace con el conjunto difuso \"freno fuerte\" usando implicación por recorte?",
@@ -235,7 +248,8 @@ export const fuzzyQuestions = [
         "text": "Se multiplica cada punto del conjunto por 0,4, reduciendo proporcionalmente su área",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Recorte = cortar el conjunto difuso a la altura de la fuerza de disparo. Si w=0,4, ningún punto del consecuente supera 0,4."
   },
   {
     "question": "¿Cómo se definen los parámetros entrenables en PyTorch para que el optimizador los actualice?",
@@ -252,7 +266,8 @@ export const fuzzyQuestions = [
         "text": "Con torch.autograd.Variable(...)",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "nn.Parameter() registra tensor como entrenable. Optimizador lo detecta y actualiza. Un torch.tensor normal no se entrena solo."
   },
   {
     "question": "¿Para qué sirve añadir + 1e-8 en el denominador de la normalización (Capa 3)?",
@@ -269,7 +284,8 @@ export const fuzzyQuestions = [
         "text": "Para regularizar los pesos y evitar que una sola regla domine",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Épsilon 1e-8 evita dividir por cero. Si todas las reglas tienen fuerza 0, sin épsilon el programa explota. Truco numérico estándar."
   },
   {
     "question": "¿Por qué en Mamdani se necesita un paso de agregación antes de defuzzificar?",
@@ -286,7 +302,8 @@ export const fuzzyQuestions = [
         "text": "Porque la defuzzificación solo funciona sobre conjuntos normalizados y la agregación garantiza que el máximo sea 1",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Cada regla Mamdani produce su propio conjunto difuso. Hay que juntarlos todos en uno solo antes de poder calcular el centroide."
   },
   {
     "question": "¿Qué operación realiza x.unsqueeze(1) en el forward de ANFISLayer?",
@@ -303,7 +320,8 @@ export const fuzzyQuestions = [
         "text": "Transpone el tensor x para que las columnas sean las reglas",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "unsqueeze(1) añade dimensión para broadcasting. Permite restar x contra todos los μ de todas las reglas a la vez en una operación."
   },
   {
     "question": "En TSK de orden 0, el consecuente de cada regla es:",
@@ -320,7 +338,8 @@ export const fuzzyQuestions = [
         "text": "Un conjunto difuso singleton centrado en un valor fijo",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "TSK orden 0: consecuente = constante. No depende de las entradas. Cada regla aporta un número fijo, siempre el mismo."
   },
   {
     "question": "¿Con qué función de pérdida se entrena ANFIS para tareas de regresión?",
@@ -337,7 +356,8 @@ export const fuzzyQuestions = [
         "text": "nn.MSELoss",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "MSELoss = error cuadrático medio. Mide distancia entre predicción y realidad al cuadrado. Función de pérdida estándar para regresión."
   },
   {
     "question": "Un sistema TSK tiene 3 reglas con fuerzas de disparo w ₁ =0,5, w ₂ =0,3, w ₃ =0,2 y consecuentes y ₁ =20, y ₂ =40, y ₃ =10. ¿Cuál es la salida final del sistema?",
@@ -354,7 +374,8 @@ export const fuzzyQuestions = [
         "text": "20 (domina la regla con mayor fuerza de disparo)",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Media ponderada: (0,5·20 + 0,3·40 + 0,2·10) / 1,0 = 24. Los pesos ya suman 1, así que salida directa es 24."
   },
   {
     "question": "¿Qué optimizador se recomienda como \"buena elección por defecto\" para entrenar ANFIS?",
@@ -371,7 +392,8 @@ export const fuzzyQuestions = [
         "text": "RMSProp",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Adam = buena opción por defecto. Adapta learning rate por parámetro automáticamente. Funciona bien sin mucho ajuste manual."
   },
   {
     "question": "¿Qué ventaja aporta la lógica difusa a ANFIS respecto a una red neuronal pura?",
@@ -388,7 +410,8 @@ export const fuzzyQuestions = [
         "text": "Mayor precisión en todos los problemas de clasificación",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Lógica difusa → interpretabilidad. Reglas SI-ENTONCES legibles en lenguaje natural. Red neuronal pura = caja negra sin explicación."
   },
   {
     "question": "En un sistema TSK con antecedentes que no se solapan entre sí, ¿qué comportamiento presenta el sistema?",
@@ -405,7 +428,8 @@ export const fuzzyQuestions = [
         "text": "Las fuerzas de disparo normalizadas de todas las reglas activas suman más de 1 en las zonas sin solapamiento",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Sin solapamiento → solo una regla activa a la vez. Sistema = función a trozos, sin transiciones suaves entre regiones."
   },
   {
     "question": "¿Qué ventaja aporta la red neuronal a ANFIS respecto a un sistema fuzzy clásico?",
@@ -422,7 +446,8 @@ export const fuzzyQuestions = [
         "text": "Elimina la necesidad de definir reglas IF-THEN en la base de conocimiento",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Red neuronal en ANFIS → parámetros (μ, σ, p) se aprenden solos de los datos. No necesitas experto humano definiendo todo a mano."
   },
   {
     "question": "¿Qué método de PyTorch se llama para calcular los gradientes en el bucle de entrenamiento?",
@@ -439,7 +464,8 @@ export const fuzzyQuestions = [
         "text": "loss.backward()",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "loss.backward() = backpropagation. Calcula gradientes de la pérdida respecto a todos los parámetros. Luego optimizer.step() los aplica."
   },
   {
     "question": "¿Qué ventaja tiene usar la T-norma producto frente al mínimo para calcular la fuerza de disparo en TSK, desde el punto de vista del entrenamiento?",
@@ -456,7 +482,8 @@ export const fuzzyQuestions = [
         "text": "El producto reduce el número de reglas necesarias para cubrir el espacio de entrada",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Producto diferenciable siempre → gradientes fluyen bien → backprop funciona. Mínimo tiene punto no diferenciable donde membresías iguales."
   },
   {
     "question": "¿Qué hace optimizer.zero_grad() al inicio de cada iteración?",
@@ -473,7 +500,8 @@ export const fuzzyQuestions = [
         "text": "Pone a cero la función de pérdida antes de calcularla",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "zero_grad() limpia gradientes del paso anterior. PyTorch acumula por defecto. Sin limpiar, gradientes se suman y entrenamiento falla."
   },
   {
     "question": "Se necesita un controlador difuso donde el operario valide cada decisión en lenguaje natural (\"aplicar freno suave\", \"aumentar temperatura moderadamente\"). ¿Qué sistema es más adecuado?",
@@ -490,7 +518,8 @@ export const fuzzyQuestions = [
         "text": "Ambos son equivalentes para este propósito ya que comparten la misma estructura de antecedentes",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Mamdani usa conjuntos lingüísticos: \"freno suave\", \"temperatura alta\". Operario entiende eso. TSK da ecuaciones, menos intuitivo."
   },
   {
     "question": "¿Qué permite inspeccionar ANFIS que una red neuronal pura no permite?",
@@ -507,7 +536,8 @@ export const fuzzyQuestions = [
         "text": "La precisión del modelo en datos no vistos durante el entrenamiento",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Puedes ver μ y σ aprendidos de cada regla. Te dicen en qué zona del espacio se especializa. Red neuronal pura no muestra eso."
   },
   {
     "question": "¿En qué situación TSK es claramente preferible a Mamdani?",
@@ -524,7 +554,8 @@ export const fuzzyQuestions = [
         "text": "Cuando el universo de discurso de la salida es discreto y acotado",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "TSK = salida diferenciable → se integra fácil con optimización por gradiente. Ideal para combinar con aprendizaje automático."
   },
   {
     "question": "¿Por qué ANFIS implementa la T-norma producto en lugar del mínimo para calcular la fuerza de disparo?",
@@ -541,7 +572,8 @@ export const fuzzyQuestions = [
         "text": "Porque el producto algebraico siempre produce fuerzas de disparo mayores que el mínimo, mejorando la precisión",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Producto diferenciable en todo su dominio → backprop posible. No confundir: mínimo SÍ funciona en la mayoría de puntos, pero falla en igualdad."
   },
   {
     "question": "Tanto Mamdani como TSK usan funciones de pertenencia en los antecedentes. ¿En qué parte de la arquitectura difieren estructuralmente?",
@@ -558,7 +590,8 @@ export const fuzzyQuestions = [
         "text": "Solo en el consecuente",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "Mamdani y TSK solo difieren en el consecuente. Mamdani = conjunto difuso. TSK = función lineal. Antecedentes son idénticos."
   },
   {
     "question": "¿Cuál es la diferencia entre los \"parámetros de premisa\" y los \"parámetros de consecuente\" en ANFIS?",
@@ -575,7 +608,8 @@ export const fuzzyQuestions = [
         "text": "Los de premisa son fijos (definidos por el experto); solo los de consecuente son entrenables en ANFIS",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Premisa (μ, σ) = forma de conjuntos difusos en Capa 1. Consecuente (p, q, r) = función lineal en Capa 4. Dos tipos distintos de parámetros."
   },
   {
     "question": "Un sistema Mamdani y uno TSK tienen exactamente las mismas reglas y funciones de pertenencia en los antecedentes. Para una misma entrada, ¿pueden producir salidas numéricas diferentes?",
@@ -592,7 +626,8 @@ export const fuzzyQuestions = [
         "text": "Solo producen salidas diferentes cuando la fuerza de disparo de alguna regla supera 0,5",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Sí, pueden dar salidas distintas. Mamdani integra centroide sobre conjunto difuso. TSK calcula media ponderada. Procesos diferentes → resultados diferentes."
   },
   {
     "question": "¿Por qué la inicialización con K-means de los centros μ mejora la convergencia?",
@@ -609,7 +644,8 @@ export const fuzzyQuestions = [
         "text": "Porque K-means inicializa también los parámetros σ y p, no solo μ, reduciendo el espacio de búsqueda",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "K-means coloca centros μ cerca de agrupaciones naturales de datos. Reglas relevantes desde el inicio → converge más rápido que aleatorio."
   },
   {
     "question": "Se tiene la regla TSK: \"SI x ₁ ES A Y x ₂ ES B ENTONCES y = 3x ₁ − 2x ₂ + 5\". Para x ₁ =4, x ₂ =1, con peso normalizado w̄=1 (única regla activ",
@@ -630,7 +666,8 @@ export const fuzzyQuestions = [
         "text": "9, porque w̄ ·y = 0,6·15 (se asume un peso arbitrario de 0,6)",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "y = 3·4 − 2·1 + 5 = 15. Única regla activa con w̄=1, no modifica resultado. Salida directa = 15."
   },
   {
     "question": "¿Qué información concreta proporciona el valor de σ aprendido de una regla?",
@@ -647,7 +684,8 @@ export const fuzzyQuestions = [
         "text": "El rango de valores para los que la regla produce predicciones correctas",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "σ pequeño = regla selectiva, zona estrecha. σ grande = regla amplia, casi indiferente a esa variable. Indica cuánto le importa."
   },
   {
     "question": "¿Qué representa el parámetro r en el consecuente lineal y = p·x ₁ + q·x ₂ + r de Takagi-Sugeno?",
@@ -664,7 +702,8 @@ export const fuzzyQuestions = [
         "text": "El término independiente (bias) que permite a la función lineal no pasar por cero",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "r = bias, término independiente. Permite que la función lineal no pase por cero. Como el b en y = mx + b."
   },
   {
     "question": "¿Por qué se recomienda reducir n_rules a 2-3 cuando N < 100 muestras?",
@@ -681,7 +720,8 @@ export const fuzzyQuestions = [
         "text": "Por una restricción de PyTorch que no soporta más de 3 reglas cuando el batch size es menor que 100",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Muchas reglas + pocos datos = sobreajuste. Modelo memoriza ruido en vez de patrón real. Regla: menos datos → menos reglas."
   },
   {
     "question": "¿Qué representa cada regla difusa en ANFIS desde el punto de vista del espacio de entrada?",
@@ -698,7 +738,8 @@ export const fuzzyQuestions = [
         "text": "Un único punto exacto de entrenamiento memorizado por el modelo",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Cada regla = una región local del espacio de entrada. Gaussiana centrada en μ con anchura σ define dónde la regla se activa."
   },
   {
     "question": "¿Qué ventaja tienen las funciones de pertenencia Gaussianas frente a las triangulares en ANFIS entrenado con backpropagation?",
@@ -715,7 +756,8 @@ export const fuzzyQuestions = [
         "text": "Garantizan siempre menor error de validación",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Gaussiana suave y diferenciable siempre. Triangular tiene picos no diferenciables. Para backpropagation, Gaussiana funciona mejor."
   },
   {
     "question": "¿Qué sucede con una regla si una de sus membresías de entrada es muy pequeña y se utiliza T-norma producto?",
@@ -732,7 +774,8 @@ export const fuzzyQuestions = [
         "text": "La regla se convierte automáticamente en dominante",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Una membresía baja arrastra todo el producto: 0,9·0,8·0,1 = 0,072 << mínimo 0,1. Producto más exigente: TODAS deben cumplirse."
   },
   {
     "question": "¿Qué representa el valor normalizado w̄ᵢ de una regla en ANFIS?",
@@ -749,7 +792,8 @@ export const fuzzyQuestions = [
         "text": "La contribución relativa de la regla respecto al total de reglas activas",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "w̄ᵢ = contribución relativa de esa regla. Si w̄ᵢ = 0,7, esa regla aporta 70% de la salida final del sistema."
   },
   {
     "question": "¿Por qué ANFIS puede considerarse un modelo híbrido?",
@@ -766,7 +810,8 @@ export const fuzzyQuestions = [
         "text": "Porque combina lógica difusa interpretable con aprendizaje automático neuronal",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "ANFIS = híbrido porque combina lógica difusa (interpretable, reglas SI-ENTONCES) con red neuronal (aprende de datos). Lo mejor de dos mundos."
   },
   {
     "question": "Si se usa la T-norma producto en lugar del mínimo para calcular el antecedente de una regla con tres entradas cuyos grados de pertenencia son 0,9 · 0,8 · 0,1, ¿qué implicación práctica tiene el resultado frente al mínimo?",
@@ -783,7 +828,8 @@ export const fuzzyQuestions = [
         "text": "Ambas T-normas producen el mismo resultado cuando una de las membresías es muy pequeña",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Producto (0,072) mucho menor que mínimo (0,1). Una entrada mala penaliza más con producto. Sistema más exigente y discriminante."
   },
   {
     "question": "Un sistema TSK tiene funciones de pertenencia en las entradas bien ajustadas, pero sus parámetros lineales de consecuente (p, q, r) se inicializaron todos a cero. ¿Qué salida producirá el sistema antes de entrenar?",
@@ -800,7 +846,8 @@ export const fuzzyQuestions = [
         "text": "La media aritmética de todos los valores de entrenamiento, porque los pesos normalizados suman 1",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Todos yᵢ = 0·x + 0 = 0. Media ponderada de ceros = cero siempre. No importa la entrada, salida = 0 antes de entrenar."
   },
   {
     "question": "Un conjunto difuso tiene μ( x) = 0,6 para x = 25. ¿Qué afirmación es correcta desde el punto de vista de la lógica difusa?",
@@ -817,7 +864,8 @@ export const fuzzyQuestions = [
         "text": "x = 25 pertenece simultáneamente al conjunto y a su complemento, con grados 0,6 y 0,4 respectivamente, sin contradicción",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "μ(x)=0,6 no es probabilidad. x pertenece al conjunto con grado 0,6 Y al complemento con 0,4 a la vez. Eso es lógica difusa, no estadística."
   },
   {
     "question": "¿Cuál es la principal ventaja computacional de TSK frente a Mamdani en aplicaciones de control en tiempo real?",
@@ -834,7 +882,8 @@ export const fuzzyQuestions = [
         "text": "TSK no necesita evaluar las funciones de pertenencia de las entradas, ahorrando cálculo en la fuzzificación",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "TSK calcula media ponderada de números directamente. Mamdani necesita integrar sobre conjunto difuso (centroide). TSK más rápido computacionalmente."
   },
   {
     "question": "En un sistema difuso con dos variables de entrada y tres conjuntos difusos por variable, ¿cuántas reglas como máximo tendría una base de reglas completa?",
@@ -851,7 +900,8 @@ export const fuzzyQuestions = [
         "text": "9 reglas",
         "isCorrect": true
       }
-    ]
+    ],
+    "explanation": "2 variables × 3 conjuntos cada una = 3 × 3 = 9 reglas. Combinación de todos los conjuntos posibles de ambas variables."
   },
   {
     "question": "Un sistema difuso tiene funciones de pertenencia muy solapadas entre conjuntos adyacentes. ¿Qué efecto tiene esto sobre el comportamiento del sistema?",
@@ -868,7 +918,8 @@ export const fuzzyQuestions = [
         "text": "Hace el sistema más preciso porque cada valor de entrada activa exactamente una regla",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Mucho solapamiento → varias reglas activas a la vez → transiciones suaves entre regiones. El sistema interpola gradualmente."
   },
   {
     "question": "En un sistema TSK, aumentar el número de reglas manteniendo el número de datos de entrenamiento constante, ¿qué riesgo principal introduce?",
@@ -885,7 +936,8 @@ export const fuzzyQuestions = [
         "text": "Que las fuerzas de disparo normalizadas superen el valor 1 al sumar más términos",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Más reglas con mismos datos = sobreajuste. Cada regla cubre región más pequeña con sus propios parámetros, pudiendo memorizar ruido."
   },
   {
     "question": "Se tienen dos reglas TSK con fuerzas de disparo w ₁ = 0,8 y w ₂ = 0,2, y consecuentes y ₁ = 10 e y ₂ = 50. ¿Cuál es la salida final del sistema?",
@@ -902,7 +954,8 @@ export const fuzzyQuestions = [
         "text": "10 (la regla con mayor fuerza de disparo domina completamente)",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Media ponderada: (0,8·10 + 0,2·50) / 1,0 = 18. La regla con w=0,8 domina pero no anula a la otra. Es media, no máximo."
   },
   {
     "question": "¿Por qué Mamdani es preferible a TSK cuando el objetivo es que un experto humano valide e interprete la salida del sistema?",
@@ -919,7 +972,8 @@ export const fuzzyQuestions = [
         "text": "Porque Mamdani permite usar más reglas que TSK para el mismo número de variables de entrada",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "Mamdani = consecuente lingüístico que el experto entiende. \"Temperatura alta\" tiene sentido humano. y = 3x₁ − 2x₂ + 5 no tanto."
   },
   {
     "question": "¿Por qué TSK no necesita defuzzificación en sentido estricto, a diferencia de Mamdani?",
@@ -936,6 +990,7 @@ export const fuzzyQuestions = [
         "text": "Porque en TSK todas las reglas producen siempre la misma salida numérica, haciendo innecesaria la agregación",
         "isCorrect": false
       }
-    ]
+    ],
+    "explanation": "TSK da números directamente, no conjuntos difusos. Salida = media ponderada de números. No hay conjunto difuso que integrar."
   }
 ];
