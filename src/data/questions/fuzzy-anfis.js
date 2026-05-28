@@ -648,22 +648,22 @@ export const fuzzyQuestions = [
     "explanation": "K-means coloca centros μ cerca de agrupaciones naturales de datos. Reglas relevantes desde el inicio → converge más rápido que aleatorio."
   },
   {
-    "question": "Se tiene la regla TSK: \"SI x ₁ ES A Y x ₂ ES B ENTONCES y = 3x ₁ − 2x ₂ + 5\". Para x ₁ =4, x ₂ =1, con peso normalizado w̄=1 (única regla activa), ¿cuál es la salida del sistema?",
+    "question": "Se tiene la regla TSK: \"SI x₁ ES A Y x₂ ES B ENTONCES y = 3x₁ − 2x₂ + 5\". Para x₁=4, x₂=1, con peso normalizado w=1 (única regla activa), ¿cuál es la salida del sistema?",
     "options": [
       {
         "text": "5 (solo el término independiente, porque los coeficientes se ignoran al normalizar)",
         "isCorrect": false
       },
       {
-        "text": "15, porque y = 3·4 − 2·1 + 5 = 12 − 2 + 5 = 15, y al ser la única regla activa w̄=1 no modifica el resultado",
+        "text": "15, porque y = 3·4 − 2·1 + 5 = 12 − 2 + 5 = 15, y al ser la única regla activa w=1 no modifica el resultado",
         "isCorrect": true
       },
       {
-        "text": "9, porque w̄ ·y = 0,6·15 (se asume un peso arbitrario de 0,6)",
+        "text": "9, porque w·y = 0,6·15 (se asume un peso arbitrario de 0,6)",
         "isCorrect": false
       }
     ],
-    "explanation": "y = 3·4 − 2·1 + 5 = 15. Única regla activa con w̄=1, no modifica resultado. Salida directa = 15."
+    "explanation": "y = 3·4 − 2·1 + 5 = 15. Única regla activa con w=1, no modifica resultado. Salida directa = 15."
   },
   {
     "question": "¿Qué información concreta proporciona el valor de σ aprendido de una regla?",
